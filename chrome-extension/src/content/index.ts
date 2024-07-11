@@ -5,5 +5,5 @@ if (window.location.href.includes("/twitter.co") || window.location.href.include
     // Redirect to custom React page
     // const redirectUrl = chrome.runtime.getURL('redirect.html');
     // console.log('Redirecting to:', redirectUrl);
-    window.location.href = "google.com";
+    window.location.href = "https://thoughtfulx.vercel.app/";
 }

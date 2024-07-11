@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log("Content script running"),(window.location.href.includes("/twitter.co")||window.location.href.includes("/x.co")||window.location.href.includes(".x.co"))&&(window.location.href="google.com")})();
+(()=>{"use strict";console.log("Content script running"),(window.location.href.includes("/twitter.co")||window.location.href.includes("/x.co")||window.location.href.includes(".x.co"))&&(window.location.href="https://thoughtfulx.vercel.app/")})();

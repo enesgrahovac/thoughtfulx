@@ -7,8 +7,7 @@ module.exports = {
   entry: {
     popup: './src/popup/index.tsx',
     background: './src/background/index.ts',
-    content: './src/content/index.ts',
-    redirect: './src/redirect_page/RedirectPage.tsx'
+    content: './src/content/index.ts'
   },
   output: {
     filename: '[name].bundle.js',
@@ -33,14 +32,9 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/popup.html',
+      template: './src/popup/popup.html',
       filename: 'popup.html',
       chunks: ['popup']
-    }),
-    new HtmlWebpackPlugin({
-      template: './public/redirect.html',
-      filename: 'redirect.html',
-      chunks: ['redirect']
     }),
     new CopyWebpackPlugin({
       patterns: [
