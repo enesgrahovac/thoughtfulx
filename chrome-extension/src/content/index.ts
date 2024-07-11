@@ -1,11 +1,25 @@
-console.log('Content script running');
 
-// Check if the current page is a Twitter (X) page
-if (window.location.href.includes("/twitter.co") || window.location.href.includes("/x.co") || window.location.href.includes(".x.co")) {
-    // Redirect to custom React page
-    // const redirectUrl = chrome.runtime.getURL('redirect.html');
-    // console.log('Redirecting to:', redirectUrl);
-    if (!(window.location.href.includes("/messages") || window.location.href.includes("/compose/post"))) {
-        window.location.href = "https://thoughtfulx.vercel.app/";
-    }
+
+function isTwitterOrX(url: string): boolean {
+  return url.includes("/twitter.co") || url.includes("/x.co") || url.includes(".x.co");
 }
+
+function shouldRedirect(url: string): boolean {
+  return !url.includes("/messages") && !url.includes("/compose/post");
+}
+
+function handleNavigation(url: string) {
+  if (isTwitterOrX(url) && shouldRedirect(url)) {
+    window.location.href = "https://thoughtfulx.vercel.app/";
+  }
+}
+
+// Initial check
+handleNavigation(window.location.href);
+
+// Observe URL changes
+const observer = new MutationObserver(() => {
+  handleNavigation(window.location.href);
+});
+
+observer.observe(document, { subtree: true, childList: true });
