@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("Background script running"),chrome.runtime.onMessage.addListener(((o,e,n)=>{"PAGE_VISIT"===o.type&&o.url&&console.log(`ThoughtfulX says you're on X! URL: ${o.url}`)}))})();
