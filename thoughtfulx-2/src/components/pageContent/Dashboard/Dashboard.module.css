@@ -1,0 +1,83 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.mainContainer {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.quizCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align items to the start */
+  gap: 30px;
+}
+
+.card {
+  flex: 0 0 calc(33.333% - 40px); /* Ensure the card does not grow but keeps the specified size */
+  margin-bottom: 30px;
+}
+
+/* Targets a card that is the only child of its row */
+.card:nth-last-child(1):nth-child(3n + 1),
+/* Targets a card that is the second child of its row and there are no more cards after it */
+.card:nth-last-child(2):nth-child(3n + 1),
+.card:nth-last-child(2):nth-child(3n + 2),
+/* Targets a card that is the third child of its row and there are no more cards after it */
+.card:nth-last-child(3):nth-child(3n + 1),
+.card:nth-last-child(3):nth-child(3n + 2),
+.card:nth-last-child(3):nth-child(3n + 3) {
+  justify-content: flex-start;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+  .card {
+    flex: 1 0 calc(50% - 40px); /* Adjust for 2 cards per row */
+  }
+
+  /* Same concept for 2 cards per row */
+  .card:nth-last-child(1):nth-child(2n + 1),
+  .card:nth-last-child(2):nth-child(2n + 1),
+  .card:nth-last-child(2):nth-child(2n + 2) {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 1 0 calc(100% - 40px); /* Full width for small screens */
+  }
+
+  .flex-item--hidden {
+    display: none; /* No need for invisible items in single column view */
+  }
+}
+
+.actionButtons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-direction: column;
+    width:150px;
+
+}
