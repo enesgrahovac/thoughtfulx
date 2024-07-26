@@ -57,7 +57,7 @@ const RegisterContent = ({ }: {}) => {
 
     const callTwitterAuth = async (nextUrl:string) => {
         
-        const redirectToURL= `${window.location.origin}/auth/callback?next=${nextUrl || ""}`
+        const redirectToURL= `${window.location.origin}/auth/callback`
         
         const result = await supabase.auth.signInWithOAuth({
             provider: "twitter",
