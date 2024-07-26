@@ -13,6 +13,7 @@ type UserContextType = {
     isSubscribed?: boolean;
     hasUserPassedFreeTrial?: boolean;
     logOutUser?: () => void;
+    twitterHandle?: string;
 };
 
 const defaultUserContext: UserContextType = {
@@ -23,7 +24,8 @@ const defaultUserContext: UserContextType = {
 
     isSubscribed: false,
     hasUserPassedFreeTrial: true,
-    logOutUser: () => { }
+    logOutUser: () => { },
+    twitterHandle: ''
 };
 
 export const UserContext = createContext<UserContextType>(defaultUserContext);
@@ -43,6 +45,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [userId, setUserId] = useState<string>('')
     const [isSubscribed, setIsSubscribed] = useState<boolean>(false)
     const [hasUserPassedFreeTrial, setHasUserPassedFreeTrial] = useState<boolean>(false)
+    const [twitterHandle, setTwitterHandle] = useState<string>('')
     const supabase = createClient();
 
     const logOutUser = async () => {
@@ -77,6 +80,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
         setUserEmail(data.user.email)
         setUserId(data.user.id)
+        setTwitterHandle(data.user.user_metadata?.twitter_handle)
         const userData = {
             createdAt: data.user.created_at,
             userId: data.user.id,
@@ -107,7 +111,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     }, [lastFileID]);
 
     return (
-        <UserContext.Provider value={{ lastFileID, setLastFileID, userEmail, userId, isSubscribed, hasUserPassedFreeTrial, logOutUser }}>
+        <UserContext.Provider value={{ lastFileID, setLastFileID, userEmail, userId, isSubscribed, hasUserPassedFreeTrial, logOutUser, twitterHandle }}>
             {children}
         </UserContext.Provider>
     );

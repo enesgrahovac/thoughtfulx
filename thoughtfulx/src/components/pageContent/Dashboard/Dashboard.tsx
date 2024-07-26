@@ -16,7 +16,7 @@ export async function copyTextToClipboard(text: string): Promise<void> {
 export default function DashboardContent() {
 
     // const [ showCopiedMessage, setShowCopiedMessage ] = useState(false);
-    const { userId } = useUser();
+    const { twitterHandle } = useUser();
 
     const buttonStyles = {
         width: "100%",
@@ -34,7 +34,7 @@ export default function DashboardContent() {
                                 <Button style={buttonStyles} label="Send Message" onClick={() => { window.location.href = 'https://x.com/messages/compose'; }} />
                                 <Button style={buttonStyles} label="Write a Post" onClick={() => { window.location.href = 'https://x.com/compose/post'; }} />
                                 <Button style={buttonStyles} label="Check Inbox" onClick={() => { window.location.href = 'https://x.com/messages'; }} />
-                                <Button style={buttonStyles} label="View Profile" onClick={() => { window.location.href = 'https://x.com/profile'; }} />
+                                <Button style={buttonStyles} label="View Profile" onClick={() => { window.location.href = `https://x.com/${twitterHandle}`; }} />
                             </div>
                         </div>
                         <div className={styles.featureRequest}>
