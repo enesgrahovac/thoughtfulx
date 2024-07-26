@@ -55,7 +55,7 @@ const RegisterContent = ({ }: {}) => {
         
     }, [lastFileID])
 
-    const callGoogleAuth = async (nextUrl:string) => {
+    const callTwitterAuth = async (nextUrl:string) => {
         
         const redirectToURL= `${window.location.origin}/auth/callback?next=${nextUrl || ""}`
         
@@ -70,10 +70,10 @@ const RegisterContent = ({ }: {}) => {
     }
 
     const handleLogin = async () => {
-        const result = await callGoogleAuth("/home");
+        const result = await callTwitterAuth("/dashboard");
         
         const { data, error } = result;
-        
+        console.log("registration data", data)
         
         if (error) {
             console.error('Error logging in:', error.message);

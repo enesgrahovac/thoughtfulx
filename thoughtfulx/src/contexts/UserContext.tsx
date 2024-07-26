@@ -66,7 +66,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     const getUser = async () => {
         const { data, error } = await supabase.auth.getUser()
-
+        console.log(data, error)
         if (error || !data?.user) {
             // router.push(`/auth`)
             return
