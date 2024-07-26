@@ -12,7 +12,9 @@ export async function POST(
     const userEmail = params.email;
     const name = params.name;
     const fullName = params.fullName;
-
+    const avatarUrl = params.avatarUrl;
+    const createdAt = params.createdAt;
+    const handle = params.handle;
     // Check if user already exists
     const { data: existingUser, error: fetchError } = await supabase
         .from('auth.users')
@@ -36,7 +38,10 @@ export async function POST(
                 id: userId,
                 email: userEmail,
                 name,
-                full_name: fullName
+                full_name: fullName,
+                created_at: createdAt,
+                handle: handle,
+                avatar_url: avatarUrl
             }
         ]);
     

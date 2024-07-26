@@ -44,7 +44,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [isSubscribed, setIsSubscribed] = useState<boolean>(false)
     const [hasUserPassedFreeTrial, setHasUserPassedFreeTrial] = useState<boolean>(false)
     const supabase = createClient();
-    const router = useRouter()
 
     const logOutUser = async () => {
         setUserId('')
@@ -52,17 +51,17 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setIsSubscribed(false)
     }
 
-    const checkSubscription = async () => {
-        const userSub = await getUserSubscriptionStatus(userId);
+    // const checkSubscription = async () => {
+    //     const userSub = await getUserSubscriptionStatus(userId);
 
-        setIsSubscribed(userSub['isPremium'])
-    }
+    //     setIsSubscribed(userSub['isPremium'])
+    // }
 
-    useEffect(() => {
-        if (userId) {
-            checkSubscription()
-        }
-    }, [userId])
+    // useEffect(() => {
+    //     if (userId) {
+    //         checkSubscription()
+    //     }
+    // }, [userId])
 
     const getUser = async () => {
         const { data, error } = await supabase.auth.getUser()
@@ -79,11 +78,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         setUserEmail(data.user.email)
         setUserId(data.user.id)
         const userData = {
+            createdAt: data.user.created_at,
             userId: data.user.id,
             email: data.user.email,
             name: data.user.user_metadata?.full_name,
             fullName: data.user.user_metadata?.full_name,
-
+            handle: data.user.user_metadata?.user_name,
+            avatarUrl: data.user.user_metadata?.avatar_url
         }
         addUserdata(userData)
     }
