@@ -1,3 +1,7 @@
+function isDeveloperDocs(url: string): boolean {
+  return url.includes("developer.twitter.co") || url.includes("developer.x.co");
+}
+
 function isTwitterOrX(url: string): boolean {
     
 
@@ -5,8 +9,8 @@ function isTwitterOrX(url: string): boolean {
     if (url.includes("/twitter.co") || url.includes("/x.co") || url.includes(".x.co")) {
         shouldRedirect = true;
     }
-    // Don't redirect if the url contains developer.twitter.co or developer.x.co
-    if (url.includes("developer.twitter.co") || url.includes("developer.x.co")) {
+
+    if (isDeveloperDocs(url)) {
         shouldRedirect = false;
     }
 
