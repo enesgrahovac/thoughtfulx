@@ -6,6 +6,10 @@ function isHelpPage(url: string): boolean {
   return url.includes("help.twitter.co") || url.includes("help.x.co");
 }
 
+function isApiRoute(url: string): boolean {
+  return url.includes("api.twitter.co") || url.includes("api.x.co");
+}
+
 function isTwitterOrX(url: string): boolean {
     
 
@@ -19,6 +23,10 @@ function isTwitterOrX(url: string): boolean {
     }
 
     if (isHelpPage(url)) {
+        shouldRedirect = false;
+    }
+
+    if (isApiRoute(url)) {
         shouldRedirect = false;
     }
 
