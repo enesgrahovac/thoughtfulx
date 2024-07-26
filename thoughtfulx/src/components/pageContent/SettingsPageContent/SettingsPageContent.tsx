@@ -48,7 +48,7 @@ const SettingsPageContent = ({ }) => {
                             !isSubscribed
                                 ? isOnTrial
                                     ? "Currently on the free trial. Upgrade to Pro now to ensure you don't lose access to unlimited quiz taking and quiz creation."
-                                    : <span>Join BookQuest Pro to gain access to unlimited quiz taking, and quiz creation!<br /><br /> For early supporters, we're offering a one-time payment of $99 for lifetime access. 7-day money-back guarantee. This will change to a subscription model soon.</span>
+                                    : <span>Join ThoughtfulX Pro to gain access to unlimited quiz taking, and quiz creation!<br /><br /> For early supporters, we're offering a one-time payment of $99 for lifetime access. 7-day money-back guarantee. This will change to a subscription model soon.</span>
                                 // : `Your subscription renews on ${renewalDate}.`
                                 : `You're on an active subscription forever! This is the perks of being an early adopter. Tell a friend!`
                         }
@@ -74,7 +74,7 @@ const SettingsPageContent = ({ }) => {
                             </div>
                             <Button
                                 variant="primary"
-                                label="Join BookQuest Pro for a one-time payment of $99"
+                                label="Join ThoughtfulX Pro for a one-time payment of $99"
                                 className={styles.button}
                                 onClick={() => {
                                     if (userId) {

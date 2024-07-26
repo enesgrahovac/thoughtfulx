@@ -14,10 +14,10 @@ const RegisterContent = ({ }: {}) => {
     const supabase = createClient();
     const { lastFileID, setLastFileID } = useUser();
     const [login, setLogin] = useState(false)
-    const [titleText, setTitleText] = useState("Register for BookQuest")
+    const [titleText, setTitleText] = useState("Register for ThoughtfulX")
     const [preLinkText, setPreLinkText] = useState("Have an account?")
     const [linkText, setLinkText] = useState("Sign in instead")
-    const [labelText, setLabelText] = useState("Register with Google")
+    const [labelText, setLabelText] = useState("Register with X")
 
     
 
@@ -35,12 +35,12 @@ const RegisterContent = ({ }: {}) => {
 
     useEffect(() => {
         if (login === true) {
-            setTitleText("Log in to BookQuest")
+            setTitleText("Log in to ThoughtfulX")
             setPreLinkText("Don't have an account?")
             setLinkText("Sign up instead")
             setLabelText("Log in with Google")
         } else {
-            setTitleText("Register for BookQuest")
+            setTitleText("Register for ThoughtfulX")
             setPreLinkText("Have an account?")
             setLinkText("Sign in instead")
             setLabelText("Register with Google")

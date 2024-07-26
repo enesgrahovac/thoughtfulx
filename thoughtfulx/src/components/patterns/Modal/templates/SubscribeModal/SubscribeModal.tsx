@@ -150,7 +150,7 @@ const SubscribeModal = ({
                 <div className={styles.buttonGroup}>
                     <Button
                         variant="primary"
-                        label="Join BookQuest Pro"
+                        label="Join ThoughtfulX Pro"
                         onClick={() => {
                             if (userId) {
                                 upgradeToPremium(userId)

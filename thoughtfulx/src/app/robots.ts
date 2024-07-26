@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://book-quest.com/sitemap.xml',
+    sitemap: 'https://thoughtfulx.vercel.app/sitemap.xml',
   }
 }

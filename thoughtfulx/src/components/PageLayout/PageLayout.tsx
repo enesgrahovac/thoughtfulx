@@ -12,7 +12,7 @@ import { useUser } from '@/contexts/UserContext'
 import {useRouter, usePathname} from 'next/navigation'
 const PageLayout = ({
     children,
-    title = "BookQuest",
+    title = "ThoughtfulX",
     showStaticHeader = false,
     showMenu = true,
     footer,

@@ -27,7 +27,7 @@ const HamburgerMenu = () => {
             <div onClick={toggleMenu} className={classNames(styles.overlay, isMenuOpen ? styles.open : null)} >
                 <div className={classNames(styles.menu, isMenuOpen ? styles.open : null)}>
                     <Header
-                        title="BookQuest"
+                        title="ThoughtfulX"
                         actions={
                             <Button
                                 variant="ghost"
@@ -70,7 +70,7 @@ const HamburgerMenu = () => {
                         </li>
                         <li>
                             <a href="/landing" target="_blank">
-                                <Info /> About BookQuest
+                                <Info /> About ThoughtfulX
                             </a>
                         </li>
                         {/* <li>
