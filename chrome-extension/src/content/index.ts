@@ -1,7 +1,16 @@
-
-
 function isTwitterOrX(url: string): boolean {
-  return url.includes("/twitter.co") || url.includes("/x.co") || url.includes(".x.co");
+    
+
+    let shouldRedirect = false;
+    if (url.includes("/twitter.co") || url.includes("/x.co") || url.includes(".x.co")) {
+        shouldRedirect = true;
+    }
+    // Don't redirect if the url contains developer.twitter.co or developer.x.co
+    if (url.includes("developer.twitter.co") || url.includes("developer.x.co")) {
+        shouldRedirect = false;
+    }
+
+  return shouldRedirect;
 }
 
 function shouldRedirect(url: string): boolean {
@@ -10,7 +19,7 @@ function shouldRedirect(url: string): boolean {
 
 function handleNavigation(url: string) {
   if (isTwitterOrX(url) && shouldRedirect(url)) {
-    window.location.href = "https://thoughtfulx.vercel.app/";
+    window.location.href = "https://thoughtfulx.vercel.app/dashboard";
   }
 }
 
