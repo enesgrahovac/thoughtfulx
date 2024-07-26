@@ -1,9 +1,3 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
 .section {
   display: flex;
   flex-direction: column;
@@ -12,10 +6,9 @@
 
 .dashboardContainer {
   display: flex;
-  flex-direction: column;
-  gap: 32px;
-  flex: 1 1 auto;
-  overflow: auto;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 
 .mainContainer {
@@ -25,59 +18,41 @@
   margin-bottom: 30px;
 }
 
-.quizCardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* Align items to the start */
-  gap: 30px;
+.actionsContainer{
+    display: flex;
+    width: 768px;
+    flex-direction: row;
+    justify-content: center;
 }
 
-.card {
-  flex: 0 0 calc(33.333% - 40px); /* Ensure the card does not grow but keeps the specified size */
-  margin-bottom: 30px;
+.actionsContents {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 200px;
+    /* width: 100%; */
+    /* align-items: center; */
+
 }
 
-/* Targets a card that is the only child of its row */
-.card:nth-last-child(1):nth-child(3n + 1),
-/* Targets a card that is the second child of its row and there are no more cards after it */
-.card:nth-last-child(2):nth-child(3n + 1),
-.card:nth-last-child(2):nth-child(3n + 2),
-/* Targets a card that is the third child of its row and there are no more cards after it */
-.card:nth-last-child(3):nth-child(3n + 1),
-.card:nth-last-child(3):nth-child(3n + 2),
-.card:nth-last-child(3):nth-child(3n + 3) {
-  justify-content: flex-start;
-}
+.actionButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
 
-/* Media Queries for responsiveness */
-@media (max-width: 1200px) {
-  .card {
-    flex: 1 0 calc(50% - 40px); /* Adjust for 2 cards per row */
-  }
-
-  /* Same concept for 2 cards per row */
-  .card:nth-last-child(1):nth-child(2n + 1),
-  .card:nth-last-child(2):nth-child(2n + 1),
-  .card:nth-last-child(2):nth-child(2n + 2) {
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 600px) {
-  .card {
-    flex: 1 0 calc(100% - 40px); /* Full width for small screens */
-  }
-
-  .flex-item--hidden {
-    display: none; /* No need for invisible items in single column view */
-  }
 }
 
 .actionButtons {
     display: flex;
     gap: 16px;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
-    width:150px;
+    width: 140px;
 
+}
+
+.featureRequest{
+    font-size: 8px;
 }

@@ -72,7 +72,7 @@ const PageLayout = ({
                         <div className={styles.headerInner}>
                             <Header
                                 showMenu={showMenu}
-                                title="Pablo - Design Template"
+                                title="ThoughtfulX"
                                 actions={
                                     <ModalOpener
                                         modal={ modalToUse }
@@ -82,7 +82,7 @@ const PageLayout = ({
                                             <Button
                                                 variant="primary"
                                                 icon={<Plus />}
-                                                label="Create a pablo"
+                                                label="Upgrade"
                                                 onClick={() => options.toggleModal(true)}
                                             />
                                         )}

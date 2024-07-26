@@ -5,8 +5,9 @@ import styles from "./AuthModal.module.css";
 import classNames from "classnames";
 import Button from "@/components/patterns/Button/Button";
 import Image from "next/image";
-import google from "@/public/img/google.png";
+// import google from "@/public/img/google.png";
 import { createClient } from '@/utils/supabase/auth/client';
+import xTwitter from "@/public/img/x-twitter.png";
 
 export interface AuthModalProps extends ModalProps {
   onAuthSuccess?: () => void;
@@ -28,25 +29,26 @@ const AuthModal = ({
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
-    if (login) {
-      setTitleText("Log in to create a quiz");
-      setPreLinkText("Don't have an account?");
-      setLinkText("Sign up instead");
-      setLabelText("Log in with Google");
+    if (login === true) {
+        setTitleText("Log in to ThoughtfulX")
+        setPreLinkText("Don't have an account?")
+        setLinkText("Sign up instead")
+        setLabelText("Log in with X (Twitter)")
     } else {
-      setTitleText("Register to create a quiz");
-      setPreLinkText("Have an account?");
-      setLinkText("Sign in instead");
-      setLabelText("Register with Google");
-    }
-  }, [login]);
+        setTitleText("Register for ThoughtfulX")
+        setPreLinkText("Have an account?")
+        setLinkText("Sign in instead")
+        setLabelText("Register with X (Twitter)")
 
-  const handleGoogleAuth = async () => {
+    }
+}, [login])
+
+  const handleTwitterAuth = async () => {
     setIsAuthenticating(true);
     const redirectToURL = `${window.location.origin}/auth/callback?next=/home`;
     try {
       const result = await supabase.auth.signInWithOAuth({
-        provider: "google",
+        provider: "twitter",
         options: {
           redirectTo: redirectToURL,
         },
@@ -89,11 +91,11 @@ const AuthModal = ({
           disabled={isAuthenticating}
           icon={
             <div className={styles.iconWrapper}>
-              <Image alt="Google" src={google} width={16} height={16} />
-            </div>
+                                    <Image alt="X (Twitter) icon" src={xTwitter} width={16} height={16} />
+                                </div>
           }
           className={styles.button}
-          onClick={handleGoogleAuth}
+          onClick={handleTwitterAuth}
         />
       </div>
     </Modal>

@@ -7,7 +7,9 @@ import styles from "./Register.module.css";
 import Header from "@/components/patterns/Header/Header";
 import Button from "@/components/patterns/Button/Button";
 import Image from "next/image";
-import google from "@/public/img/google.png";
+// import google from "@/public/img/google.png";
+// import twitter from "@/public/img/twitter-icon.svg";
+import xTwitter from "@/public/img/x-twitter.png";
 import { createClient } from '@/utils/supabase/auth/client';
 import {useUser} from '@/contexts/UserContext'
 const RegisterContent = ({ }: {}) => {
@@ -17,7 +19,7 @@ const RegisterContent = ({ }: {}) => {
     const [titleText, setTitleText] = useState("Register for ThoughtfulX")
     const [preLinkText, setPreLinkText] = useState("Have an account?")
     const [linkText, setLinkText] = useState("Sign in instead")
-    const [labelText, setLabelText] = useState("Register with X")
+    const [labelText, setLabelText] = useState("Register with X (Twitter)")
 
     
 
@@ -26,11 +28,6 @@ const RegisterContent = ({ }: {}) => {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const fromUpload = urlParams.get('fromUpload');
-        // if (fromUpload === 'true') {
-        //     setFromUpload(true);
-        // } else {
-        //     setFromUpload(false);
-        // }
     }, []);
 
     useEffect(() => {
@@ -38,12 +35,12 @@ const RegisterContent = ({ }: {}) => {
             setTitleText("Log in to ThoughtfulX")
             setPreLinkText("Don't have an account?")
             setLinkText("Sign up instead")
-            setLabelText("Log in with Google")
+            setLabelText("Log in with X (Twitter)")
         } else {
             setTitleText("Register for ThoughtfulX")
             setPreLinkText("Have an account?")
             setLinkText("Sign in instead")
-            setLabelText("Register with Google")
+            setLabelText("Register with X (Twitter)")
 
         }
     }, [login])
@@ -63,7 +60,7 @@ const RegisterContent = ({ }: {}) => {
         const redirectToURL= `${window.location.origin}/auth/callback?next=${nextUrl || ""}`
         
         const result = await supabase.auth.signInWithOAuth({
-            provider: "google",
+            provider: "twitter",
             options: {
                 redirectTo: redirectToURL,
             },
@@ -110,7 +107,7 @@ const RegisterContent = ({ }: {}) => {
                             label={labelText}
                             icon={
                                 <div className={styles.iconWrapper}>
-                                    <Image alt="Google" src={google} width={16} height={16} />
+                                    <Image alt="X (Twitter) icon" src={xTwitter} width={16} height={16} />
                                 </div>
                             }
                             className={styles.button}
