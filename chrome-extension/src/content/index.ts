@@ -2,6 +2,10 @@ function isDeveloperDocs(url: string): boolean {
   return url.includes("developer.twitter.co") || url.includes("developer.x.co");
 }
 
+function isHelpPage(url: string): boolean {
+  return url.includes("help.twitter.co") || url.includes("help.x.co");
+}
+
 function isTwitterOrX(url: string): boolean {
     
 
@@ -11,6 +15,10 @@ function isTwitterOrX(url: string): boolean {
     }
 
     if (isDeveloperDocs(url)) {
+        shouldRedirect = false;
+    }
+
+    if (isHelpPage(url)) {
         shouldRedirect = false;
     }
 
