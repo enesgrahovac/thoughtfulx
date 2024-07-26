@@ -12,6 +12,8 @@ import Image from "next/image";
 import xTwitter from "@/public/img/x-twitter.png";
 import { createClient } from '@/utils/supabase/auth/client';
 import {useUser} from '@/contexts/UserContext'
+import {handleLogin} from "@/utils/auth";
+
 const RegisterContent = ({ }: {}) => {
     const supabase = createClient();
     const { lastFileID, setLastFileID } = useUser();
@@ -54,33 +56,6 @@ const RegisterContent = ({ }: {}) => {
     useEffect(() => {
         
     }, [lastFileID])
-
-    const callTwitterAuth = async (nextUrl:string) => {
-        
-        const redirectToURL= `${window.location.origin}/auth/callback`
-        
-        const result = await supabase.auth.signInWithOAuth({
-            provider: "twitter",
-            options: {
-                redirectTo: redirectToURL,
-            },
-          });
-      
-        return result
-    }
-
-    const handleLogin = async () => {
-        const result = await callTwitterAuth("/dashboard");
-        
-        const { data, error } = result;
-        console.log("registration data", data)
-        
-        if (error) {
-            console.error('Error logging in:', error.message);
-        } else {
-            
-        }
-    };
 
     return (
         <PageLayout showHeader={false}>

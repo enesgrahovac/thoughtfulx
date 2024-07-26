@@ -6,9 +6,8 @@ import classNames from "classnames";
 import Button from "@/components/patterns/Button/Button";
 import Image from "next/image";
 // import google from "@/public/img/google.png";
-import { createClient } from '@/utils/supabase/auth/client';
 import xTwitter from "@/public/img/x-twitter.png";
-
+import {handleLogin} from "@/utils/auth";
 export interface AuthModalProps extends ModalProps {
   onAuthSuccess?: () => void;
 }
@@ -19,7 +18,7 @@ const AuthModal = ({
   hideModal,
   ...rest
 }: AuthModalProps) => {
-  const supabase = createClient();
+  
   const [login, setLogin] = useState(false);
   const [titleText, setTitleText] = useState("Register for ThoughtfulX");
   const [preLinkText, setPreLinkText] = useState("Have an account?");
@@ -42,31 +41,6 @@ const AuthModal = ({
 
     }
 }, [login])
-
-  const handleTwitterAuth = async () => {
-    setIsAuthenticating(true);
-    const redirectToURL = `${window.location.origin}/auth/callback?next=/home`;
-    try {
-      const result = await supabase.auth.signInWithOAuth({
-        provider: "twitter",
-        options: {
-          redirectTo: redirectToURL,
-        },
-      });
-
-      if (result.error) {
-        console.error('Error logging in:', result.error.message);
-        setErrorMessage("Authentication failed. Please try again.");
-      } else if (onAuthSuccess) {
-        onAuthSuccess();
-      }
-    } catch (error) {
-      console.error("Authentication failed:", error);
-      setErrorMessage("Authentication failed. Please try again.");
-    } finally {
-      setIsAuthenticating(false);
-    }
-  };
 
   return (
     <Modal
@@ -95,7 +69,7 @@ const AuthModal = ({
                                 </div>
           }
           className={styles.button}
-          onClick={handleTwitterAuth}
+          onClick={handleLogin}
         />
       </div>
     </Modal>
