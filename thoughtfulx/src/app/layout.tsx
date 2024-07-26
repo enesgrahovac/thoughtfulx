@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { UserProvider } from "@/contexts/UserContext";
 import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] });
@@ -27,10 +28,10 @@ export default function RootLayout({
                 <meta name="msapplication-TileColor" content="#da532c" />
                 <meta name="theme-color" content="#ffffff" />
             </head>
-            <body className={inter.className}>
-                {children}
+            <UserProvider>
+                <body className={inter.className}>{children}</body>
                 <Analytics />
-            </body>
+            </UserProvider>
         </html>
     );
 }

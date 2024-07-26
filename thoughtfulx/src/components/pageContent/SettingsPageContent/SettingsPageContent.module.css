@@ -1,0 +1,203 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.focusTimeSettings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.disabled {
+  opacity: 0.25;
+}
+
+.focusDays,
+.alwaysOn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.miniHeader {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-base);
+}
+
+.focusDaySelector {
+  display: flex;
+  gap: 12px;
+}
+
+.focusDayOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--fg-base);
+  background-color: var(--bg-muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.15s;
+  transition-timing-function: ease-in-out;
+}
+
+.focusDayOption.selected {
+  background-color: var(--ff-orange-light);
+  color: var(--ff-orange);
+}
+
+.focusDayOption.disabled {
+  opacity: 0.5;
+}
+
+.focusTimes {
+  display: flex;
+  gap: 12px;
+}
+
+.timeInput {
+  flex-grow: 1;
+}
+
+.timeInput.disabled {
+  opacity: 0.5;
+}
+
+.alwaysOn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkbox {
+  height: 18px;
+  width: 18px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-base);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.checkbox svg {
+  color: var(--fg-on-accent);
+}
+
+.checkbox.selected {
+  background-color: var(--ff-orange);
+  border: none;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputPair {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.button {
+  width: fit-content;
+}
+
+.benSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newTabSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.exampleImage {
+  height: 150px;
+  width: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-base);
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleAndContent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#lightTab {
+  display: block;
+}
+
+#darkTab {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .newTabSection {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  #lightTab {
+    display: none;
+  }
+
+  #darkTab {
+    display: block;
+  }
+}
+
+.categoryRow {
+  border-radius: 12px;
+  border: 1px solid var(--border-base);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkCatRow {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mainToggleCategory {
+  flex: 1;
+  flex-shrink: 0;
+}
+
+.chevIcon {
+  color: var(--fg-muted);
+}
+
+.sitesBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
