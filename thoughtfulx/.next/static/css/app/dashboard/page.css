@@ -21,44 +21,47 @@
   margin-bottom: 30px;
 }
 
-.Dashboard_actionsContainer__7i3Nz{
-    display: flex;
-    width: 768px;
-    flex-direction: row;
-    justify-content: center;
+.Dashboard_actionTitle__xKFak {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.Dashboard_actionsContainer__7i3Nz {
+  display: flex;
+  width: 384px;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .Dashboard_actionsContents__cDRMK {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 200px;
-    /* width: 100%; */
-    /* align-items: center; */
-
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* width: 200px; */
+  width: 100%;
+  /* align-items: center; */
 }
 
 .Dashboard_actionButtonsContainer__yc41z {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    justify-content: center;
-    width: 100%;
-
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
 }
 
 .Dashboard_actionButtons__o72nF {
-    display: flex;
-    gap: 16px;
-    /* justify-content: center; */
-    flex-direction: column;
-    width: 140px;
-
+  display: flex;
+  gap: 16px;
+  /* justify-content: center; */
+  flex-direction: column;
+  width: 180px;
 }
 
-.Dashboard_featureRequest___QvwX{
-    font-size: 8px;
+.Dashboard_featureRequest___QvwX {
+  font-size: 16px;
 }
+
 /*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/patterns/Button/Button.module.css ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************/

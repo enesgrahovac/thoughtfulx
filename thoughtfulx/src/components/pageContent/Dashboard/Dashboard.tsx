@@ -18,18 +18,23 @@ export default function DashboardContent() {
     // const [ showCopiedMessage, setShowCopiedMessage ] = useState(false);
     const { userId } = useUser();
 
+    const buttonStyles = {
+        width: "100%",
+        height: "50px",
+    };
+
     return (
         <PageLayout title="Home" showStaticHeader={true} showMenu={false}>
             <div className={styles.dashboardContainer}>
                 <div className={styles.actionsContainer}>
                     <div className={styles.actionsContents}>
-                        <h2 >Choose an action!</h2>
+                        <span className={styles.actionTitle}>Choose an action!</span>
                         <div className={styles.actionButtonsContainer}>
                             <div className={styles.actionButtons}>
-                                <Button label="Send Message" onClick={() => { window.location.href = 'https://x.com/messages/compose'; }} />
-                                <Button label="Write a Post" onClick={() => { window.location.href = 'https://x.com/compose/post'; }} />
-                                <Button label="Check Inbox" onClick={() => { window.location.href = 'https://x.com/messages'; }} />
-                                <Button label="View Profile" onClick={() => { window.location.href = 'https://x.com/profile'; }} />
+                                <Button style={buttonStyles} label="Send Message" onClick={() => { window.location.href = 'https://x.com/messages/compose'; }} />
+                                <Button style={buttonStyles} label="Write a Post" onClick={() => { window.location.href = 'https://x.com/compose/post'; }} />
+                                <Button style={buttonStyles} label="Check Inbox" onClick={() => { window.location.href = 'https://x.com/messages'; }} />
+                                <Button style={buttonStyles} label="View Profile" onClick={() => { window.location.href = 'https://x.com/profile'; }} />
                             </div>
                         </div>
                         <div className={styles.featureRequest}>
