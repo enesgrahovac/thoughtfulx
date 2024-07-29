@@ -79,7 +79,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
         setUserEmail(data.user.email)
         setUserId(data.user.id)
-        const twitterHandle = data.user.user_metadata?.twitter_handle
+        const twitterHandle = data.user.user_metadata?.user_name
         setTwitterHandle(twitterHandle)
         const userData = {
             createdAt: data.user.created_at,
@@ -87,7 +87,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             email: data.user.email,
             name: data.user.user_metadata?.full_name,
             fullName: data.user.user_metadata?.full_name,
-            handle: data.user.user_metadata?.user_name,
+            handle: twitterHandle,
             avatarUrl: data.user.user_metadata?.avatar_url
         }
         addUserdata(userData)
