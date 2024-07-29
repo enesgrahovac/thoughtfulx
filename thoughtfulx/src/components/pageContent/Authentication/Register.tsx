@@ -16,7 +16,6 @@ import {handleLogin} from "@/utils/auth";
 
 const RegisterContent = ({ }: {}) => {
     const supabase = createClient();
-    const { lastFileID, setLastFileID } = useUser();
     const [login, setLogin] = useState(false)
     const [titleText, setTitleText] = useState("Register for ThoughtfulX")
     const [preLinkText, setPreLinkText] = useState("Have an account?")
@@ -52,10 +51,6 @@ const RegisterContent = ({ }: {}) => {
         
     }, [supabase.auth])
 
-
-    useEffect(() => {
-        
-    }, [lastFileID])
 
     return (
         <PageLayout showHeader={false}>
