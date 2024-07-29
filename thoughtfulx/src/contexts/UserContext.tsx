@@ -3,29 +3,26 @@ import { createContext, useState, useContext, useEffect, ReactNode } from 'react
 import { createClient } from '@/utils/supabase/auth/client';
 import { useRouter } from 'next/navigation'
 import { getUserSubscriptionStatus, addUserdata } from '@/utils/user'
-import { numberQuizzesInFreeTrial } from '@/utils/constants'
-
+import { useExtension } from '@/contexts/ExtensionContext';
 type UserContextType = {
-    lastFileID: string;
-    setLastFileID: (id: string) => void;
     userEmail?: string;
     userId?: string;
     isSubscribed?: boolean;
     hasUserPassedFreeTrial?: boolean;
     logOutUser?: () => void;
     twitterHandle?: string;
+    isUserDataLoading?: boolean;
+
 };
 
 const defaultUserContext: UserContextType = {
-    lastFileID: "",
-    setLastFileID: () => { },
     userEmail: '',
     userId: '',
-
     isSubscribed: false,
     hasUserPassedFreeTrial: true,
     logOutUser: () => { },
-    twitterHandle: ''
+    twitterHandle: '',
+    isUserDataLoading: true
 };
 
 export const UserContext = createContext<UserContextType>(defaultUserContext);
@@ -40,12 +37,13 @@ export const useUser = () => {
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
     // Initialize state without trying to access localStorage directly
-    const [lastFileID, setLastFileID] = useState<string>(defaultUserContext.lastFileID);
     const [userEmail, setUserEmail] = useState<string>('')
     const [userId, setUserId] = useState<string>('')
     const [isSubscribed, setIsSubscribed] = useState<boolean>(false)
     const [hasUserPassedFreeTrial, setHasUserPassedFreeTrial] = useState<boolean>(false)
     const [twitterHandle, setTwitterHandle] = useState<string>('')
+    const [isUserDataLoading, setIsUserDataLoading] = useState<boolean>(true)
+    const {updateThoughtfulXExtentionSettings} = useExtension()
     const supabase = createClient();
 
     const logOutUser = async () => {
@@ -67,6 +65,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     // }, [userId])
 
     const getUser = async () => {
+
         const { data, error } = await supabase.auth.getUser()
         console.log(data, error)
         if (error || !data?.user) {
@@ -80,7 +79,8 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
         setUserEmail(data.user.email)
         setUserId(data.user.id)
-        setTwitterHandle(data.user.user_metadata?.twitter_handle)
+        const twitterHandle = data.user.user_metadata?.twitter_handle
+        setTwitterHandle(twitterHandle)
         const userData = {
             createdAt: data.user.created_at,
             userId: data.user.id,
@@ -91,27 +91,24 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
             avatarUrl: data.user.user_metadata?.avatar_url
         }
         addUserdata(userData)
+        console.log("twitterHandle 1 ", twitterHandle)
+        if (twitterHandle){
+            updateThoughtfulXExtentionSettings(twitterHandle)
+        }
+
     }
 
     useEffect(() => {
+        setIsUserDataLoading(true)
         getUser()
+        setIsUserDataLoading(false)
     }, [supabase.auth])
 
-    useEffect(() => {
-        // Attempt to read from localStorage only after component mounts
-        const storedID = localStorage.getItem('lastFileID');
-        if (storedID) {
-            setLastFileID(storedID);
-        }
-    }, []);
-
-    useEffect(() => {
-        // Save to local storage whenever lastFileID changes
-        localStorage.setItem('lastFileID', lastFileID);
-    }, [lastFileID]);
-
     return (
-        <UserContext.Provider value={{ lastFileID, setLastFileID, userEmail, userId, isSubscribed, hasUserPassedFreeTrial, logOutUser, twitterHandle }}>
+        <UserContext.Provider value={{ 
+            userEmail, userId, isSubscribed, 
+            hasUserPassedFreeTrial, logOutUser, 
+            twitterHandle, isUserDataLoading }}>
             {children}
         </UserContext.Provider>
     );
