@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "ThoughtfulX",
-    "description": "ThoughtfulX is a chrome extension that helps you to be more thoughtful and waste no time when using the X platform.",
+    "description": "ThoughtfulX helps you be more thoughtful and waste no time when using X.",
     "version": "0.0.1",
     "icons": {
       "48": "thoughtfulx.png",
